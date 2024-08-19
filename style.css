@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.column {
+    width: 30%;
+    position: relative;
+}
+
+h2 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0;
+    border-radius: 5px;
+}
+
+.lessons {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Ẩn danh sách các bài tập */
+}
+
+.lessons li {
+    background-color: #f1f1f1;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.lessons li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.lessons li a:hover {
+    text-decoration: underline;
+}
+
+.column:hover .lessons {
+    display: block; /* Hiển thị danh sách các bài tập khi hover */
+}
