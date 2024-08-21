@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Xử lý mảng</title>
-  <!--  <link rel="stylesheet" href="Bai4-styles.css"> -->
+ <link rel="stylesheet" href="Bai4-styles.css"> 
 </head>
 <body>
     <div class="container">
