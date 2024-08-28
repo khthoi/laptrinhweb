@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="vi">
+<?php
+session_start();
+require 'Bai3-functions.php';
 
-<head>
-    <meta charset="UTF-8">
-    <title>Phép Tính và Kiểm Tra Số</title>
-    <link rel="stylesheet" href="Bai3-styles.css">
-</head>
+// Khởi tạo biến kết quả
+$ketqua_pheptinh = isset($_SESSION['ketqua_pheptinh']) ? $_SESSION['ketqua_pheptinh'] : '';
+$ketqua_kiemtraso = isset($_SESSION['ketqua_kiemtraso']) ? $_SESSION['ketqua_kiemtraso'] : '';
 
-<body>
-    <?php
-    session_start();
-    require 'Bai3-functions.php';
+// Xử lý phép tính trên hai số
+if (isset($_POST['tinh'])) {
+    $so1 = isset($_POST['so1']) ? intval($_POST['so1']) : 0;
+    $so2 = isset($_POST['so2']) ? intval($_POST['so2']) : 0;
+    $pheptinh = isset($_POST['pheptinh']) ? $_POST['pheptinh'] : '';
 
-    // Khởi tạo biến kết quả
-    $ketqua_pheptinh = isset($_SESSION['ketqua_pheptinh']) ? $_SESSION['ketqua_pheptinh'] : '';
-    $ketqua_kiemtraso = isset($_SESSION['ketqua_kiemtraso']) ? $_SESSION['ketqua_kiemtraso'] : '';
-
-    // Xử lý phép tính trên hai số
-    if (isset($_POST['tinh'])) {
-        $so1 = $_POST['so1'];
-        $so2 = $_POST['so2'] ?? 0;
-        $pheptinh = $_POST['pheptinh'];
-
+    if ($pheptinh) {
         switch ($pheptinh) {
             case 'cong':
                 $ketqua_pheptinh = tinhTong($so1, $so2);
@@ -33,20 +24,28 @@
                 $ketqua_pheptinh = tinhTich($so1, $so2);
                 break;
             case 'chia':
-                $ketqua_pheptinh = tinhThuong($so1, $so2);
+                if ($so2 != 0) {
+                    $ketqua_pheptinh = tinhThuong($so1, $so2);
+                } else {
+                    $ketqua_pheptinh = "Không thể chia cho 0!";
+                }
                 break;
             default:
                 $ketqua_pheptinh = "Chọn phép tính hợp lệ!";
         }
-
-        $_SESSION['ketqua_pheptinh'] = $ketqua_pheptinh;
+    } else {
+        $ketqua_pheptinh = "Vui lòng chọn một phép tính.";
     }
 
-    // Xử lý kiểm tra số
-    if (isset($_POST['kiemtra'])) {
-        $so = $_POST['so_can_kiem_tra'];
-        $kieutra = $_POST['kieutra'];
+    $_SESSION['ketqua_pheptinh'] = $ketqua_pheptinh;
+}
 
+// Xử lý kiểm tra số
+if (isset($_POST['kiemtra'])) {
+    $so = isset($_POST['so_can_kiem_tra']) ? intval($_POST['so_can_kiem_tra']) : 0;
+    $kieutra = isset($_POST['kieutra']) ? $_POST['kieutra'] : '';
+
+    if ($kieutra) {
         switch ($kieutra) {
             case 'chanle':
                 $ketqua_kiemtraso = kiemTraChan($so) ? "Số $so là số chẵn" : "Số $so là số lẻ";
@@ -57,11 +56,22 @@
             default:
                 $ketqua_kiemtraso = "Chọn phép kiểm tra hợp lệ!";
         }
-
-        $_SESSION['ketqua_kiemtraso'] = $ketqua_kiemtraso;
+    } else {
+        $ketqua_kiemtraso = "Vui lòng chọn một phép kiểm tra.";
     }
-    ?>
 
+    $_SESSION['ketqua_kiemtraso'] = $ketqua_kiemtraso;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Phép Tính và Kiểm Tra Số</title>
+    <link rel="stylesheet" href="Bai3-styles.css"> 
+</head>
+<body>
     <h1>PHÉP TÍNH TRÊN HAI SỐ</h1>
     <fieldset>
         <form method="POST" action="">
