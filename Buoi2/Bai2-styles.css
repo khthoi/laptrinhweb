@@ -3,8 +3,8 @@ body {
     background-color: #f7f9fc;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding-top: 20px;
+    align-items: center;
+    height: 100vh; /* Ensure the body takes up the full height of the viewport */
     margin: 0;
 }
 
@@ -14,7 +14,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    width: 100%;
+    width: 100%; /* Ensure the container doesn’t exceed the viewport width */
 }
 
 h2 {
