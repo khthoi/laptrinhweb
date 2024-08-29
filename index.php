@@ -11,10 +11,10 @@
         <div class="column">
             <h2>Buổi 1</h2>
             <ul class="lessons">
-                <li><a href="TableBasic.php">Bài 1</a></li>
-                <li><a href="HelloWorld.php">Bài 2</a></li>
-                <li><a href="Bai3-main.php">Bài 3</a></li>
-                <li><a href="Bai4-main.php">Bài 4</a></li>
+                <li><a href="Buoi1/TableBasic.php">Bài 1</a></li>
+                <li><a href="Buoi1/HelloWorld.php">Bài 2</a></li>
+                <li><a href="Buoi1/Bai3-main.php">Bài 3</a></li>
+                <li><a href="Buoi1/Bai4-main.php">Bài 4</a></li>
 
                 <!-- Thêm các bài khác tại đây -->
             </ul>
@@ -23,8 +23,9 @@
         <div class="column">
             <h2>Buổi 2</h2>
             <ul class="lessons">
-                <li><a href="buoi2/bai1.php">Bài 1</a></li>
-                <li><a href="buoi2/bai2.php">Bài 2</a></li>
+                <li><a href="Buoi2/Bai1-php.php">Bài 1</a></li>
+                <li><a href="Buoi2/Bai1-js.php">Bài 2</a></li>
+                <li><a href="Buoi2/Bai2.php">Bài 3</a></li>
                 <!-- Thêm các bài khác tại đây -->
             </ul>
         </div>
