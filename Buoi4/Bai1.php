@@ -10,10 +10,9 @@
 
 <body>
     <div class="container">
+        <h2>Payment Receipt Upload Form</h2>
         <form method="POST" action="" enctype="multipart/form-data" onsubmit="return validateForm();">
-            <h2>Payment Receipt Upload Form</h2>
             <div id="errorMessages"></div>
-
             <div class="input-group">
                 <label for="firstName">Name</label>
                 <input type="text" id="firstName" name="firstName" placeholder="First Name">
