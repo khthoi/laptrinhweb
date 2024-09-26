@@ -44,6 +44,35 @@
                 <!-- Thêm các bài khác tại đây -->
             </ul>
         </div>
+        <div class="column">
+            <h2>Buổi 5</h2>
+            <ul class="lessons">
+                <li><a href="Buoi5/Bai1.php">Bài 1</a></li>
+                <li><a href="Buoi5/Bai2.php">Bài 2</a></li>
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Buổi 6</h2>
+            <ul class="lessons">
+                <li><a href="Buoi6/mysqlinsertdata.php">Bài 1</a></li>
+                <li><a href="Buoi6/mysqlmodify.php">Bài 2</a></li>
+                <li><a href="Buoi6/mysqlremovefunct.php">Bài 3</a></li>
+                <li><a href="Buoi6/mysqlshowtable.php">Bài 4</a></li>
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Buổi 7</h2>
+            <ul class="lessons">
+                <li><a href="Buoi7/danhsachsinhvien.php">DanhSachSinhVien</a></li>
+                <li><a href="Buoi7/themsinhvien.php">ThemSinhVien</a></li>
+                <li><a href="Buoi7/xoasinhvien.php">XoaSinhVien</a></li>
+                <li><a href="Buoi7/suasinhvien.php">SuaSinhVien</a></li>
+
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
     </div>
 </body>
 </html>
