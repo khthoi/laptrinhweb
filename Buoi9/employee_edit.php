@@ -13,7 +13,7 @@ $departments = $employee->getAllDepartments();
 $id = isset($_GET['id']) ? (int)$_GET['id'] : '';
 if ($id) {
     $data = $employee->getEmployee($id);
-    
+
     // Nếu không có dữ liệu tức không tìm thấy nhân viên cần sửa
     if (!$data) {
         header("location: employee_list.php");
@@ -81,28 +81,30 @@ $db->disconnect($db);
 
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa thông tin nhân viên</title>
 </head>
+
 <body>
     <h1>Sửa thông tin nhân viên</h1>
-    <a href="employee_list.php">Trở về</a><br/><br/>
+    <a href="employee_list.php">Trở về</a><br /><br />
 
     <form method="post" action="employee_edit.php?id=<?php echo $emid; ?>">
         <table width="50%" border="1" cellspacing="0" cellpadding="10">
             <tr>
                 <td>First name</td>
                 <td>
-                    <input type="text" name="firstname" value="<?php echo htmlspecialchars($emfirstname); ?>"/>
+                    <input type="text" name="firstname" value="<?php echo htmlspecialchars($emfirstname); ?>" />
                     <?php if (!empty($errors['firstname'])) echo $errors['firstname']; ?>
                 </td>
             </tr>
             <tr>
                 <td>Last name</td>
                 <td>
-                    <input type="text" name="lastname" value="<?php echo htmlspecialchars($emlastname); ?>"/>
+                    <input type="text" name="lastname" value="<?php echo htmlspecialchars($emlastname); ?>" />
                     <?php if (!empty($errors['lastname'])) echo $errors['lastname']; ?>
                 </td>
             </tr>
@@ -110,9 +112,11 @@ $db->disconnect($db);
                 <td>Chức Vụ</td>
                 <td>
                     <select name="role">
-                        <option value="<?php echo htmlspecialchars($emroleid); ?>"><?php echo htmlspecialchars($employee->getRoleName($emroleid)); ?></option>
                         <?php foreach ($roles as $item) { ?>
-                            <option value="<?php echo $item['RoleID']; ?>"><?php echo htmlspecialchars($item['RoleName']); ?></option>
+                            <option value="<?php echo $item['RoleID']; ?>"
+                                <?php echo ($item['RoleID'] == $emroleid) ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($item['RoleName']); ?>
+                            </option>
                         <?php } ?>
                     </select>
                 </td>
@@ -121,35 +125,39 @@ $db->disconnect($db);
                 <td>Phòng Ban</td>
                 <td>
                     <select name="department">
-                        <option value="<?php echo htmlspecialchars($emdepartmentid); ?>"><?php echo htmlspecialchars($employee->getDepartmentName($emdepartmentid)); ?></option>
                         <?php foreach ($departments as $item) { ?>
-                            <option value="<?php echo $item['DepartmentID']; ?>"><?php echo htmlspecialchars($item['DepartmentName']); ?></option>
+                            <option value="<?php echo $item['DepartmentID']; ?>"
+                                <?php echo ($item['DepartmentID'] == $emdepartmentid) ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($item['DepartmentName']); ?>
+                            </option>
                         <?php } ?>
                     </select>
                 </td>
             </tr>
+
             <tr>
                 <td>Ngày Thuê</td>
                 <td>
-                    <input type="date" name="hiredate" value="<?php echo htmlspecialchars($emhiredate); ?>"/>
+                    <input type="date" name="hiredate" value="<?php echo htmlspecialchars($emhiredate); ?>" />
                     <?php if (!empty($errors['hiredate'])) echo $errors['hiredate']; ?>
                 </td>
             </tr>
             <tr>
                 <td>Lương</td>
                 <td>
-                    <input type="number" name="salary" value="<?php echo htmlspecialchars($emsalary); ?>"/>
+                    <input type="number" name="salary" value="<?php echo htmlspecialchars($emsalary); ?>" />
                     <?php if (!empty($errors['salary'])) echo $errors['salary']; ?>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="hidden" name="id" value="<?php echo $emid; ?>"/>
-                    <input type="submit" name="edit_employee" value="Lưu"/>
+                    <input type="hidden" name="id" value="<?php echo $emid; ?>" />
+                    <input type="submit" name="edit_employee" value="Lưu" />
                 </td>
             </tr>
         </table>
     </form>
 </body>
+
 </html>

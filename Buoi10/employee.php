@@ -166,6 +166,7 @@ class Employee
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC)['DepartmentName'] ?? null;
     }
+    // Get User by Name
     public function getUserByUsername($username)
     {
         $conn = $this->db->connect();
@@ -176,16 +177,28 @@ class Employee
         $this->db->disconnect($conn);
         return $user;
     }
-    
-    public function addUser($username, $hashedPassword)
+
+    // Add User
+    public function addUser($username, $hashedPassword, $role)
     {
         $conn = $this->db->connect();
 
-        // Thêm người dùng vào bảng users
-        $stmt = $conn->prepare("INSERT INTO users (Username, PasswordHash, Role) VALUES (:username, :passwordHash, 'user')");
+        // Thêm người dùng vào bảng users với vai trò được chỉ định
+        $stmt = $conn->prepare("INSERT INTO users (Username, PasswordHash, Role) VALUES (:username, :passwordHash, :role)");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':passwordHash', $hashedPassword);
+        $stmt->bindParam(':role', $role);
+
         return $stmt->execute();
+    }
+
+    //Get All User
+    public function getAllUser()
+    {
+        $conn = $this->db->connect();
+        $stmt = $conn->prepare("SELECT UserID, Username, PasswordHash, Role FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Authentication method for login
@@ -201,8 +214,7 @@ class Employee
 
         // Kiểm tra mật khẩu
         if ($user && password_verify($password, $user['PasswordHash'])) {
-            // Bắt đầu phiên và lưu thông tin người dùng
-            session_start();
+            // Lưu thông tin người dùng vào session (session đã được bắt đầu trước đó)
             $_SESSION['user_id'] = $user['UserID'];
             $_SESSION['role'] = $user['Role'];
             return true;
@@ -211,25 +223,25 @@ class Employee
         }
     }
 
-    // Logout method
+    // Logout
     public function logout()
     {
-        session_start();
+        // Xóa tất cả session
         session_unset();
         session_destroy();
     }
-
+    
     // Check if user is logged in
     public function isLoggedIn()
     {
-        session_start();
+        // Kiểm tra xem người dùng đã đăng nhập chưa (session đã được bắt đầu trước đó)
         return isset($_SESSION['user_id']);
     }
 
     // Check user role
     public function checkRole($required_role)
     {
-        session_start();
+        // Kiểm tra vai trò của người dùng (session đã được bắt đầu trước đó)
         return isset($_SESSION['role']) && $_SESSION['role'] == $required_role;
     }
 }

@@ -66,10 +66,35 @@
             <h2>Buổi 7</h2>
             <ul class="lessons">
                 <li><a href="Buoi7/danhsachsinhvien.php">DanhSachSinhVien</a></li>
-                <li><a href="Buoi7/themsinhvien.php">ThemSinhVien</a></li>
-                <li><a href="Buoi7/xoasinhvien.php">XoaSinhVien</a></li>
-                <li><a href="Buoi7/suasinhvien.php">SuaSinhVien</a></li>
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Buổi 8</h2>
+            <ul class="lessons">
+                <li><a href="Buoi8/process.php">Buổi 8</a></li>
 
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Buổi 9</h2>
+            <ul class="lessons">
+                <li><a href="Buoi9/employee_list.php">DanhSachNhanCong</a></li>
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Buổi 10</h2>
+            <ul class="lessons">
+                <li><a href="Buoi10/login.php">DangNhap</a></li>
+                <!-- Thêm các bài khác tại đây -->
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Bai Tap Lon 60%(Deployed)</h2>
+            <ul class="lessons">
+                <li><a href="WEB MS Phuong/Project/index.php">QuanLiBanHang</a></li>
                 <!-- Thêm các bài khác tại đây -->
             </ul>
         </div>
